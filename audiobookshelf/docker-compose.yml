@@ -1,0 +1,14 @@
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    container_name: vsuh_audio
+    ports:
+      - 1333:80
+    restart: unless-stopped
+    user: "1000"
+    volumes:
+      - /home/vsuh/audiobooks:/audiobooks
+      - /opt/audiobookshelf/config:/config
+      - /opt/audiobookshelf/metadata:/metadata
+    environment:
+      - TZ=Europe/Moscow
