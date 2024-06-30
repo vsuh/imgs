@@ -1,0 +1,33 @@
+# NPM + transmission
+---
+version: "3.0"
+services:
+  # heimdall + cloudcmd + syncthing
+
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: cs-vsuh-heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Moscow
+    labels:
+      io.portainer.server: false
+    volumes:
+      - /opt/heimdall:/config
+    ports:
+      - 80:80
+    #      - 443:443
+    restart: unless-stopped
+
+  cloudcmd:
+    image: coderaiser/cloudcmd
+    container_name: cs-vsuh-cloudcmd
+    labels:
+      io.portainer.server: false
+    volumes:
+      - ~:/root
+      - /:/mnt/fs
+    ports:
+      - 881:8000
+
