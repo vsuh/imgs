@@ -17,7 +17,7 @@ services:
       - /opt/heimdall:/config
     ports:
       - 80:80
-    #      - 443:443
+      - 443:443
     restart: unless-stopped
 
   cloudcmd:
